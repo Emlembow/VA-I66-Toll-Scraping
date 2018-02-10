@@ -5,7 +5,6 @@ import datetime
 import csv
 from selenium import webdriver
 
-
 def loadDriver():
     try:
         # Open window and set Resolution
@@ -16,6 +15,11 @@ def loadDriver():
         driver.get("https://vai66tolls.com/")
     except webDriverError:
         print("[ERROR] Firefox webdriver not found\n")
+
+def whatTimeIsIt():
+    global now
+    ts = time.time()
+    now = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 
 def run():
@@ -33,18 +37,17 @@ def run():
     time.sleep(1)
 
     # Scrape the Toll Amount and Append to CSV
-    count = 0
-    while count < 100:
+    var = 1
+    while var == 1:
         driver.find_element_by_xpath("//*[@id='tollRefreshBtn']").click()
         toll = driver.find_element_by_xpath("//*[@id='spanTollAmt']").text
-        now = str(datetime.datetime.now())
-        print(toll, now)
-        count += 1
+        whatTimeIsIt()
         if toll[0] == "N":
             toll = 0
         with open('Output.csv', 'a') as newFile:
             newFileWriter = csv.writer(newFile)
             newFileWriter.writerow([now, toll])
+        print(toll, now)
         print("CSV Updated")
         time.sleep(60)
 
