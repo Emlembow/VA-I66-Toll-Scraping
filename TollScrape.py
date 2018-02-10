@@ -21,7 +21,6 @@ def whatTimeIsIt():
     east = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(5, 30))& (now_time <= dtime(10, 30))))
     west = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(15))& (now_time <= dtime(19))))
 
-
 def clickxpath(xpath):
     driver.find_element_by_xpath(xpath).click()
     time.sleep(1)
@@ -53,7 +52,7 @@ def run(direction):
         driver.quit()
 
 
-def collect():
+def collect_toll():
     whatTimeIsIt()
     clickxpath("//*[@id='tollRefreshBtn']")
     toll = driver.find_element_by_xpath("//*[@id='spanTollAmt']").text
@@ -79,7 +78,7 @@ def main():
             else:
                 print("No tolls right now. Waiting 60 seconds and trying again")
                 time.sleep(60)
-            collect()
+            collect_toll()
 
 
 if __name__ == "__main__":
