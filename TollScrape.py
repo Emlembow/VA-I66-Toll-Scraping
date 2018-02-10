@@ -1,10 +1,9 @@
 # Toll Scraper
-
 import time
-import datetime
 import csv
 from selenium import webdriver
-
+from datetime import datetime
+from datetime import time as dtime
 
 def loadDriver():
     global driver
@@ -17,9 +16,10 @@ def whatTimeIsIt():
     global east
     global west
     global now
-    now = datetime.datetime.now()
-    east = ((now.isoweekday() in range(1, 6)) & (now.hour in range(5, 10)))
-    west = (now.weekday() < 5) & (now.hour in range(15, 19))
+    now = datetime.now()
+    now_time = now.time()
+    east = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(5, 30))& (now_time <= dtime(10, 30))))
+    west = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(15))& (now_time <= dtime(19))))
 
 
 def clickxpath(xpath):
