@@ -40,7 +40,7 @@ def run():
     # Scrape the Toll Amount and Append to CSV
     var = 1
     while var == 1:
-        driver.find_element_by_xpath("//*[@id='tollRefreshBtn']").click()
+        clickXPATH("//*[@id='tollRefreshBtn']")
         toll = driver.find_element_by_xpath("//*[@id='spanTollAmt']").text
         whatTimeIsIt()
         if toll[0] == "N":
