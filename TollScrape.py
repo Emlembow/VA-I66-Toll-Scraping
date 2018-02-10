@@ -15,7 +15,7 @@ def loadDriver():
         driver.set_window_size(400, 800)
         driver.get("https://vai66tolls.com/")
     except webDriverError:
-        test_results.write("[ERROR] Firefox webdriver not found\n")
+        print("[ERROR] Firefox webdriver not found\n")
 
 
 def run():
