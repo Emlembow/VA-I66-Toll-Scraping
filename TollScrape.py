@@ -30,20 +30,20 @@ def run(direction):
     global commute
     if direction is east:
         commute = "Eastbound I66 West to Washington"
-        clickXPATH("/html/body/form/div[4]/ul/li[1]/a/span[1]") #Current Toll Estimate
-        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[4]/div[1]/span") #Eastboound AM Tolls
-        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[6]/div/select/option[2]") #Enter I-66West
-        clickXPATH("//*[@id='btnUpdateBeginSel']") #Select
-        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[7]/div/select/option[8]") #Exit Washington
-        clickXPATH("//*[@id='btnUpdateEndSel']") #Select
+        clickXPATH("/html/body/form/div[4]/ul/li[1]/a/span[1]")  # Current Toll Estimate
+        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[4]/div[1]/span")  # Eastbound AM Tolls
+        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[6]/div/select/option[2]")  # Enter I-66West
+        clickXPATH("//*[@id='btnUpdateBeginSel']")  # Select
+        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[7]/div/select/option[8]")  # Exit Washington
+        clickXPATH("//*[@id='btnUpdateEndSel']")  # Select
     elif direction is west:
         commute = "Westbound Washington to I66West"
-        clickXPATH("/html/body/form/div[4]/ul/li[1]/a/span[1]")
-        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[4]/div[2]/span")
-        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[6]/div/select/option[2]")
-        clickXPATH("//*[@id='btnUpdateBeginSel']")
-        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[7]/div/select/option[6]")
-        clickXPATH("//*[@id='btnUpdateEndSel']")
+        clickXPATH("/html/body/form/div[4]/ul/li[1]/a/span[1]")  # Current Toll Estimate
+        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[4]/div[2]/span")  # Westbound PM Tolls
+        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[6]/div/select/option[2]")  # Enter Washington
+        clickXPATH("//*[@id='btnUpdateBeginSel']")  # Select
+        clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[7]/div/select/option[6]")  # Exit I-66West
+        clickXPATH("//*[@id='btnUpdateEndSel']")  # Select
     else:
         print("[Error] direction '", direction, "' not supported")
         driver.close()
