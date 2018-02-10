@@ -6,6 +6,7 @@ from selenium import webdriver
 
 
 def loadDriver():
+    global driver
     driver = webdriver.Firefox()
     driver.set_window_position(0, 0)
     driver.set_window_size(400, 800)
@@ -27,7 +28,7 @@ def clickXPATH(XPATH):
 
 def run(direction):
     global commute
-    if direction is 'east':
+    if direction is east:
         commute = "Eastbound I66 West to Washington"
         clickXPATH("/html/body/form/div[4]/ul/li[1]/a/span[1]") #Current Toll Estimate
         clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[4]/div[1]/span") #Eastboound AM Tolls
@@ -35,7 +36,7 @@ def run(direction):
         clickXPATH("//*[@id='btnUpdateBeginSel']") #Select
         clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[7]/div/select/option[8]") #Exit Washington
         clickXPATH("//*[@id='btnUpdateEndSel']") #Select
-    elif direction is 'west':
+    elif direction is west:
         commute = "Westbound Washington to I66West"
         clickXPATH("/html/body/form/div[4]/ul/li[1]/a/span[1]")
         clickXPATH("/html/body/form/div[5]/div/div/div/div/div[2]/div[4]/div[2]/span")
