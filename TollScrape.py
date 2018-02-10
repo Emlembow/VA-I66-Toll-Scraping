@@ -18,8 +18,7 @@ def whatTimeIsIt():
     global west
     global now
     now = datetime.datetime.now()
-    # east = ((now.isoweekday() in range(1, 6)) & (now.hour in range(5, 10)))
-    east = True
+    east = ((now.isoweekday() in range(1, 6)) & (now.hour in range(5, 10)))
     west = (now.weekday() < 5) & (now.hour in range(15, 19))
 
 
