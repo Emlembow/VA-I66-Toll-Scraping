@@ -73,12 +73,13 @@ def main():
             whatTimeIsIt()
             if east is True:
                 run(east)
+                collect_toll()
             elif west is True:
                 run(west)
+                collect_toll()
             else:
                 print("No tolls right now. Waiting 60 seconds and trying again")
                 time.sleep(60)
-            collect_toll()
 
 
 if __name__ == "__main__":
