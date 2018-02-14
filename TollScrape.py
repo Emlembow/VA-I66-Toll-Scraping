@@ -4,10 +4,14 @@ import csv
 from selenium import webdriver
 from datetime import datetime
 from datetime import time as dtime
+from selenium.webdriver.firefox.options import Options
+
 
 def loadDriver():
     global driver
-    driver = webdriver.Firefox()
+    options = Options()
+    options.add_argument("--headless")
+    driver = webdriver.Firefox(firefox_options=options)
     driver.set_window_position(0, 0)
     driver.set_window_size(400, 800)
 
@@ -24,6 +28,7 @@ def whatTimeIsIt():
     text_time = datetime.now().strftime('%H:%M:%S')
     east = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(5, 30))& (now_time <= dtime(10, 30))))
     west = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(15))& (now_time <= dtime(19))))
+
 
 def clickxpath(xpath):
     driver.find_element_by_xpath(xpath).click()
@@ -82,7 +87,7 @@ def main():
                 run(west)
                 collect_toll()
             else:
-                print("No tolls right now. Waiting 60 seconds and trying again")
+                print("No tolls right now. Waiting 60 seconds and trying again\n")
                 time.sleep(60)
 
 
