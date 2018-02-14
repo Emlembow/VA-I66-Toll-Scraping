@@ -16,8 +16,12 @@ def whatTimeIsIt():
     global east
     global west
     global now
+    global date
+    global text_time
     now = datetime.now()
     now_time = now.time()
+    date = datetime.today().strftime('%Y-%m-%d')
+    text_time = datetime.now().strftime('%H:%M:%S')
     east = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(5, 30))& (now_time <= dtime(10, 30))))
     west = ((now.isoweekday() in range(1, 6)) & ((now_time >= dtime(15))& (now_time <= dtime(19))))
 
@@ -60,8 +64,8 @@ def collect_toll():
         toll = 0
     with open('Output.csv', 'a') as newFile:
         newfilewriter = csv.writer(newFile)
-        newfilewriter.writerow([commute, now, toll])
-    print(commute, toll, now)
+        newfilewriter.writerow([commute, date, text_time, toll])
+    print(commute, date, text_time, toll)
     print("CSV Updated\n")
     time.sleep(60)
 
